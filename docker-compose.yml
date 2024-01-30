@@ -1,0 +1,30 @@
+version: '3'
+services:
+  backend:
+    build: backend/
+    restart: on-failure
+    ports: 
+      - 5555:5555
+    volumes:
+      - ./backend/src:/app/src
+    depends_on:
+      - database
+  frontend:
+    build: frontend/
+    restart: on-failure
+    ports: 
+      - 5556:8080
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - backend
+  database:
+    build: database/
+    restart: on-failure
+    ports:
+      - 5557:3050
+    volumes:
+      - ./database/data:/firebird/data
+    environment:
+      - ISC_PASSWORD=masterkey
+    
