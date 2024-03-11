@@ -1,19 +1,33 @@
-import { Routes, Route } from "react-router-dom";
-import Clientes from "./pages/Clientes";
-import Vendas from "./pages/Vendas";
-import Produtos from "./pages/Produtos";
-import Header from "./components/Header";
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
+import Header from './components/Header/Header';
+import Clientes from './pages/Clientes';
+import Produtos from './pages/Produtos';
+import Vendas from './pages/Vendas';
+import CrudVenda from './pages/CrudVenda';
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <Header />
       <main>
         <Routes>
-          {/* As rotas so vao existir aqui */}
-          <Route path="/" element={<Clientes />} />
-          <Route path="/produtos" element={<Produtos />} />
-          <Route path="/vendas" element={<Vendas />} />
+          <Route 
+            path="/" 
+            element={<Clientes />} 
+          />
+          <Route
+            path="/produtos"
+            element={<Produtos />}
+          />
+          <Route
+            path="/vendas"
+            element={<Vendas />}
+          />
+          <Route
+            path="/vendas/:vendasId"
+            element={<CrudVenda />}
+          />
         </Routes>
       </main>
     </div>
